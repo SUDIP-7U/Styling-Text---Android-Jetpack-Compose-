@@ -8,6 +8,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Shadow
@@ -19,16 +20,22 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.geometry.Offset
+import androidx.compose.ui.tooling.preview.Preview
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
 
-            TextStylingScreen()
+
         }
     }
 }
+
+
+
+
+
 
 @Composable
 fun TextStylingScreen() {
@@ -38,40 +45,31 @@ fun TextStylingScreen() {
             .padding(16.dp),
         verticalArrangement = Arrangement.spacedBy(12.dp)
     ) {
-        Text(
-            text = "Default Text"
-        )
+        // Default text
+        Text("Default Text")
 
-        Text(
-            text = "Colored Text",
-            style = TextStyle(color = Color.Red)
-        )
+        // Using MaterialTheme typography
+        Text("Headline Large", style = MaterialTheme.typography.headlineLarge)
+        Text("Title Medium", style = MaterialTheme.typography.titleMedium)
+        Text("Body Large", style = MaterialTheme.typography.bodyLarge)
+        Text("Label Small", style = MaterialTheme.typography.labelSmall)
+
+        // Custom styles
+        Text("Colored Text", style = TextStyle(color = Color.Red))
 
         Text(
             text = "Large Bold Text",
-            style = TextStyle(
-                fontSize = 24.sp,
-                fontWeight = FontWeight.Bold
-            )
+            style = TextStyle(fontSize = 24.sp, fontWeight = FontWeight.Bold)
         )
 
         Text(
             text = "Italic Serif Font",
-            style = TextStyle(
-                fontStyle = FontStyle.Italic,
-                fontFamily = FontFamily.Serif
-            )
+            style = TextStyle(fontStyle = FontStyle.Italic, fontFamily = FontFamily.Serif)
         )
 
-        Text(
-            text = "Letter Spacing Example",
-            style = TextStyle(letterSpacing = 2.sp)
-        )
+        Text("Letter Spacing Example", style = TextStyle(letterSpacing = 2.sp))
 
-        Text(
-            text = "Underlined Text",
-            style = TextStyle(textDecoration = TextDecoration.Underline)
-        )
+        Text("Underlined Text", style = TextStyle(textDecoration = TextDecoration.Underline))
 
         Text(
             text = "Centered Text",
@@ -100,4 +98,11 @@ fun TextStylingScreen() {
             style = TextStyle(color = Color.Black)
         )
     }
+}
+
+
+@Preview(showBackground = true, showSystemUi = true, name = "Text Styling Preview")
+@Composable
+fun TextStylingScreenPreview() {
+    TextStylingScreen()
 }
